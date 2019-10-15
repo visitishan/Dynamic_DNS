@@ -20,7 +20,7 @@ There are some tools available already for DDNS like no-ip, but none of them see
 So to have a solution for this, I started building something of my own. 
 
 The ddns_client.py script logs in into my Tenda WiFi router and scrapes out the current WAN ip assigned by the ISP.
-It then sends the WAN ip to the ddns_server.php script on a web server. The scraping and ip sending process is performed in every 2-5 minutes. The IP is recieved by ddns_server.php file and is then updated into a text file stored into the same directory. The ddns_server script is alread linked with a Domain Name. So whenever the domain name is called, the ddns_server script reads back the ip text file and redirects the domain name to the current WAN ip. This is how, even after a new ip is assigned by my ISP, my server is still accessible.
+It then sends the WAN ip to the ddns_server.php script on a web server. The scraping and ip sending process is performed in every 2-5 minutes. The IP is recieved by ddns_server.php file and is then updated into a text file stored into the same directory. The ddns_server script is already linked with a Domain Name. So whenever the domain name is called, the ddns_server script reads back the ip text file and redirects the domain name to the current WAN ip. This is how, even after a new ip is assigned by my ISP, my server is still accessible.
 
 This is just a basic solution that I found to solve the issue. If you have a better solution, your contributions are welcomed. 😊
 
@@ -28,3 +28,7 @@ This is just a basic solution that I found to solve the issue. If you have a bet
 The client script is built for Tenda routers. You'll have to change the URLs if your router is from a different manufacturer.
 For Tenda stock firmwares, the default username is admin and password is encoded in base64 encoding. You'll need to change the login credentials with your's accordingly.
 The ddns_client.py script should be scheduled to always run on the server.
+
+
+#### Solution 2 -
+If you don't have a web hosting to host the ddns_server.php file, or if you don't want to use the custom server script, you can still use the no-ip server. I've built the noip_client.py script that sends the current ip to your no-ip account. However there are still few limitations from the no-ip's end like it's not completely free and their hostname expires in every 1 month. You'll need to change your hostname and authentication token in the script which is base64(your_noip_username:password).
