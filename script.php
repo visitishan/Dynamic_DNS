@@ -7,10 +7,10 @@ if(isset($_GET['ip'])){
     $myfileContents = file_get_contents("addr.txt");
     $myfileContents = explode(",",$myfileContents);
     if($myfileContents[count($myfileContents)-1] != ""){
-        $address = $myfileContents[count($myfileContents)-2];
-    }else{
         $address = $myfileContents[count($myfileContents)-1];
-    }
-    header('Location: '.'http://'.$address);
+    }/*else{
+        $address = $myfileContents[count($myfileContents)-1];
+    }*/
+    header('Location: '.'http://'.$address.':8080');
 }
 ?>
